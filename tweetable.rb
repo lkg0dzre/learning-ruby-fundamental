@@ -1,5 +1,8 @@
 module Tweetable
+  class NoBodyError < StandardError; end
+
   def tweet
-    puts "Tweeted the following: #{body}"
+    raise NoBodyError if @body.nil?
+    puts "Tweeted the following: #{@body}"
   end
 end
