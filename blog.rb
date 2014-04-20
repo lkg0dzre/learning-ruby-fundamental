@@ -4,7 +4,6 @@ require_relative "tweetable"
 module Blog
 
 class Post
-  includ Tweetable
   attr_reader :author, :title, :body, :comments
 
   def initialize options
@@ -19,9 +18,15 @@ class Post
       @comments << comment
     end
   end
+
+  def insert_random_comment
+    @comments << Comment.new(user: "Jeffrey Way",
+                             body: "a Comment")
+  end
 end
 
 class Comment
+  include Tweetable
   attr_reader :user, :body
 
   def initialize options
