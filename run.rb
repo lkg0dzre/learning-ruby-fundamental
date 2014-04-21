@@ -1,4 +1,23 @@
-class Student
+class User
+  def initialize username, password
+    @username = username
+    @password = password
+  end
+
+  def login
+
+  end
+
+  def logout
+
+  end
+
+  def sign_up
+
+  end
+end
+
+class Student < User
   def initialize name, born_at, gender
     @name = name
     @born_at = born_at
@@ -11,7 +30,7 @@ class Student
   end
 end
 
-class Teacher
+class Teacher < User
   def initialize name, proficiency, list_of_grades
     @name = name
     @proficiency = proficiency
