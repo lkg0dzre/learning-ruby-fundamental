@@ -1,7 +1,15 @@
-require_relative "blog"
+class Item
+  attr_reader :name
 
-post = Blog::Post.new author: "José Mota",
-                      title: "A title",
-                      body: "A body"
-post.extend Tweetable
-post.tweet
+  def initialize(name)
+    @id, @name = 1, name
+  end
+
+end
+
+class SpecialItem < Item
+  def initialize name, special_attributes
+    super name
+    @special_attributes = special_attributes
+  end
+end
