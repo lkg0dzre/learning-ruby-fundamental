@@ -1,50 +1,11 @@
-module Login
-  def login username, password
-    @username == username and
-    @password == password and
-    p "Successfully logged in as #@username"
+a = [5,23,5,23,266,4,7437,7,273,46,34,723]
+puts "Изначальный массив"
+p a
 
-  end
+puts "Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют возрастающую последовательность."
 
-  def logout
-
-  end
-
-  def sign_up
-
-  end
+while a.compact.count > 0
+  i = a.rindex(a.compact.min)
+  a[i] = nil
+  print i.to_s, " "
 end
-
-class Student
-  include Login
-    def initialize name, born_at, gender, username, password
-    @name = name
-    @born_at = born_at
-    @gender = gender
-    @username = username
-    @password = password
-  end
-
-  def age
-    age Date.today.year - @born_at.year
-    age -= 1 if Date.today < birthday + age.years
-  end
-end
-
-class Teacher
-  include Login
-  def initialize name, proficiency, list_of_grades, username, password
-    @name = name
-    @proficiency = proficiency
-    @list_of_grades = list_of_grades
-    @username = username
-    @password = password
-  end
-end
-
-
-student = Student.new "Bob", Time.new("1970-04-12"), "M", "bob", "alice"
-teacher = Teacher.new "Alice", Time.new("1970-04-12"), "F", "alice", "tony"
-
-student.login "bob", "alice"
-teacher.login "alice", "charlie"
