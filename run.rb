@@ -1,19 +1,34 @@
-def add *args
-  args.inject(0) { |result, number| result += number}
-end
+# RubyMonk — Primer: 8.1 Getting Modular
 
-def subtract *args
-  args.inject(args[0]*2) { |result, number| result -= number}
-end
 
-def calculate(*args)
-  mode = args.pop if args.last.is_a?(Hash)
-
-  if mode==nil or mode[:add]==true
-    add *args
-  elsif mode[:subtract]==true
-    subtract *args
+module Perimeter
+  def perimeter
+    sides.inject(0) { |result,i| result += i }
   end
 end
 
-puts calculate(4, 5)
+class Rectangle
+  include Perimeter
+  def initialize(length, breadth)
+    @length = length
+    @breadth = breadth
+  end
+
+  def sides
+    [@length, @breadth, @length, @breadth]
+  end
+end
+
+class Square
+  include Perimeter
+  def initialize(side)
+    @side = side
+  end
+
+  def sides
+    [@side, @side, @side, @side]
+  end
+end
+
+
+puts Rectangle.new(2, 3).perimeter
