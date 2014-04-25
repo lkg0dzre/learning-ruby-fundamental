@@ -1,7 +1,19 @@
-a = [7437,5,23,5,23,266,4,7437,7,273,46,34,723,7437]
-puts "Изначальный массив"
-p a
+def add *args
+  args.inject(0) { |result, number| result += number}
+end
 
-puts "В массиве переставить в начало элементы, стоящие на чётной позиции, а в конец — стоящие на нечётной."
+def subtract *args
+  args.inject(args[0]*2) { |result, number| result -= number}
+end
 
-p a.partition.with_index{ |x,i| i.odd? }.flatten
+def calculate(*args)
+  mode = args.pop if args.last.is_a?(Hash)
+
+  if mode==nil or mode[:add]==true
+    add *args
+  elsif mode[:subtract]==true
+    subtract *args
+  end
+end
+
+puts calculate(4, 5)
