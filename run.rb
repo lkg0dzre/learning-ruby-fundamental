@@ -1,34 +1,15 @@
-# RubyMonk — Primer: 8.1 Getting Modular
+# RubyMonk — Primer
 
-
-module Perimeter
-  def perimeter
-    sides.inject(0) { |result,i| result += i }
+def palindrome?(sentence)
+  sentence.downcase!
+  sentence.gsub! ' ',''
+  result = true
+  for i in (0...sentence.length / 2)
+    right_index = sentence.length - i - 1
+    result = false unless sentence[i] == sentence[right_index]
   end
-end
-
-class Rectangle
-  include Perimeter
-  def initialize(length, breadth)
-    @length = length
-    @breadth = breadth
-  end
-
-  def sides
-    [@length, @breadth, @length, @breadth]
-  end
-end
-
-class Square
-  include Perimeter
-  def initialize(side)
-    @side = side
-  end
-
-  def sides
-    [@side, @side, @side, @side]
-  end
+  result
 end
 
 
-puts Rectangle.new(2, 3).perimeter
+p palindrome? "Never odd or evene"
