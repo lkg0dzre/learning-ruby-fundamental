@@ -1,15 +1,22 @@
-# RubyMonk — Primer
-
-def palindrome?(sentence)
-  sentence.downcase!
-  sentence.gsub! ' ',''
-  result = true
-  for i in (0...sentence.length / 2)
-    right_index = sentence.length - i - 1
-    result = false unless sentence[i] == sentence[right_index]
+class Restaurant
+  def initialize(menu)
+    @menu = menu
   end
-  result
+
+  def cost(*orders)
+
+
+    sum = 0
+    orders.each do |ar|
+      ar.each do |item,count|
+        sum += count * @menu[item]
+      end
+    end
+
+    sum
+
+  end
 end
 
-
-p palindrome? "Never odd or evene"
+restaurant = Restaurant.new({:rice => 3, :noodles => 2})
+p restaurant.cost({:rice => 2, :noodles => 5},{:rice => 1, :noodles => 2})
