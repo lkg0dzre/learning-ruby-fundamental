@@ -1,22 +1,18 @@
-class Restaurant
-  def initialize(menu)
-    @menu = menu
-  end
+def median(*list)
+  return nil if list.empty?
+  list.sort!
 
-  def cost(*orders)
+  count = list.count
 
-
-    sum = 0
-    orders.each do |ar|
-      ar.each do |item,count|
-        sum += count * @menu[item]
-      end
-    end
-
-    sum
-
+  if count.odd?
+    n = (count - 1) / 2
+    list[n]
+  elsif
+    n1 = count / 2
+    n2 = n1 - 1
+    (list[n1] + list[n2]) / 2.0
   end
 end
 
-restaurant = Restaurant.new({:rice => 3, :noodles => 2})
-p restaurant.cost({:rice => 2, :noodles => 5},{:rice => 1, :noodles => 2})
+p median 2,3,1
+p median 1,2,3,4
